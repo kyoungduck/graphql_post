@@ -1,0 +1,53 @@
+{
+	"compilerOptions": {
+		"target": "es2018",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"sourceMap": true,
+		"allowJs": true,
+		"strict": true,
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"esnext",
+			"scripthost"
+		],
+		"rootDir": ".",
+		"outDir": "./build_ts/",
+		"baseUrl": "./src",
+		"paths": {
+			"~/*": [
+				"*"
+			],
+			"@res/*": [
+				"res/*"
+			],
+			"@gql/*": [
+				"graphql/*"
+			],
+			"@models/*": [
+				"models/*"
+			],
+			"@services/*": [
+				"services/*"
+			],
+			"@errors/*": [
+				"errors/*"
+			],
+			"@locales/*": [
+				"locales/*"
+			],
+		},
+		"types": [
+			"node",
+			"mocha"
+		]
+	},
+	"include": [
+		"src/**/*"
+	],
+	"exclude": [
+		"node_modules/*"
+	]
+}

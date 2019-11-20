@@ -1,0 +1,28 @@
+{
+	"compilerOptions": {
+		"baseUrl": "src",
+		"paths": {
+			"~/*": [
+				"*"
+			],
+			"@res/*": [
+				"res/*"
+			],
+			"@gql/*": [
+				"graphql/*"
+			],
+			"@models/*": [
+				"models/*"
+			],
+			"@services/*": [
+				"services/*"
+			],
+			"@errors/*": [
+				"errors/*"
+			],
+			"@locales/*": [
+				"locales/*"
+			],
+		}
+	}
+}
