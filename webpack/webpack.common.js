@@ -1,3 +1,4 @@
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { root } = require('./helpers');
 
 /**
@@ -6,7 +7,8 @@ const { root } = require('./helpers');
 module.exports = {
   devtool: 'source-map',
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
+    plugins: [new TsconfigPathsPlugin()],
   },
   output: {
     path: root('build')
