@@ -1,13 +1,11 @@
 import express from 'express';
 import helmet from 'helmet';
 import _ from 'lodash';
-import { ApolloServer } from 'apollo-server-express';
+import { ApolloServer, gql } from 'apollo-server-express';
+import './config';
 
 import resolvers from '@gql/resolver/index';
 import typeDefs from '@gql/schema/index';
-
-// Initialize environment variables
-require('dotenv').config();
 
 const path = process.env.GRAPHQL_PATH || '/graphql';
 const port = process.env.PORT || 3000;

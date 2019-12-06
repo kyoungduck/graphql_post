@@ -1,9 +1,10 @@
 import _ from 'lodash';
 
 import UserResolver from './user';
+import PostResolver from './post';
 
 
-const resolversArray: Array<any> = [UserResolver];
+const resolversArray: Array<any> = [UserResolver, PostResolver];
 const Resolver: any = {};
 
 // 리졸버 합치기

@@ -1,10 +1,27 @@
-
 type User{
+    id: ID!
     email: String!
     username: String!
 }
 
-type Query {
-    auth: Boolean
-    afterAuth: String
+input UserInputType{
+    email: String!
+    username: String!
+}
+
+input UserUpdateInputType{
+    id: ID!
+    email: String
+    username: String
+}
+
+type Query{
+    user(id:ID!) : User!
+    userList: [User!]!
+}
+
+type Mutation{
+    createUser(input: UserInputType!): User!
+    deleteUser(id:ID!): Boolean!
+    updateUser(input: UserUpdateInputType!): User!
 }
