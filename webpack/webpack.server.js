@@ -6,7 +6,7 @@ const { root } = require('./helpers');
 module.exports = {
   entry: root('./src/index.ts'),
   output: {
-    filename: 'main.js'
+    filename: 'index.js'
   },
   target: 'node',
   node: {
