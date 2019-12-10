@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
-		"start": "npx nodemon node ./build/main.js",
+		"start": "npx nodemon node ./build/index.js",
 		"watch": "webpack watch",
 		"build-dev": "webpack",
 		"build": "webpack --env.production",
