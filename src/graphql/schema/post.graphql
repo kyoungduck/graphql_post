@@ -19,7 +19,7 @@ input PostUpdateInputType{
 
 type Query{
     post(id: ID!): Post!
-    postList: [Post!]!
+    postList(pageNum: Int = 1, amount: Int = 20): [Post!]!
 }
 
 type Mutation{

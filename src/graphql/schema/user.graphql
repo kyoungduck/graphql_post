@@ -2,6 +2,8 @@ type User{
     id: ID!
     email: String!
     username: String!
+    writePost: [Post!]!
+    friends: [User!]!
 }
 
 input UserInputType{
@@ -15,13 +17,21 @@ input UserUpdateInputType{
     username: String
 }
 
+input FriendInput{
+    sourceUser: ID!
+    targetUser: ID!
+}
+
 type Query{
     user(id:ID!) : User!
-    userList: [User!]!
+    userList(pageNum: Int = 1, amount: Int = 20): [User!]!
 }
 
 type Mutation{
     createUser(input: UserInputType!): User!
     deleteUser(id:ID!): Boolean!
     updateUser(input: UserUpdateInputType!): User!
+
+    addFriend(input: FriendInput): User!
+    deleteFriend(input: FriendInput): User!
 }

@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"scripts": {
 		"start": "npx nodemon node ./build/index.js",
-		"watch": "webpack watch",
+		"watch": "webpack --watch",
 		"build-dev": "webpack",
 		"build": "webpack --env.production",
 		"test": "mocha-webpack --timeout 3000 --recursive --webpack-config webpack/webpack.test.js \"src/**/*.spec.ts\""
@@ -19,6 +19,7 @@
 		"apple-auth": "^1.0.4",
 		"bcrypt": "^3.0.7",
 		"body-parser-graphql": "^1.1.0",
+		"dataloader": "^2.0.0",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
 		"express-cluster": "^0.0.5",
@@ -58,6 +59,7 @@
 		"mini-css-extract-plugin": "^0.8.0",
 		"mocha": "^6.2.2",
 		"mocha-webpack": "^2.0.0-beta.0",
+		"nodemon-webpack-plugin": "^4.2.1",
 		"preload-webpack-plugin": "^3.0.0-beta.4",
 		"prettier": "1.18.2",
 		"raw-loader": "^3.1.0",

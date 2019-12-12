@@ -7,12 +7,11 @@ export default {
         post: async (parent: any, args: any, context: any) => {
             const result = await PostModel.findOne({_id : args.id});
             if (result === null) { throw new ApolloError('post not exists', 'BAD_ARGUMENT'); }
-            _.merge(result, {user: await UserModel.findOne({_id : result.userId}) });
             return result;
         },
 
         postList: async (parent: any, args: any, context: any) => {
-            const result = await PostModel.find();
+            const result = await PostModel.find().skip((args.pageNum - 1) * args.amount).limit(args.amount);
             return result;
         }
     },
@@ -41,6 +40,15 @@ export default {
             const updatedUser = await PostModel.findOne({_id: args.input.id});
 
             return updatedUser;
+        }
+    },
+
+    User: {
+        writePost: async (parent: any, args: any, context: any) => {
+            const result = await PostModel.find({userId: parent.id});
+            //const result = await context.postLoader.load(parent.id);
+
+            return result;
         }
     }
 }

@@ -18,6 +18,8 @@ export function postModel(mongoose: Mongoose) {
         userId: {
             type: ObjectID,
             required: true,
+            index: true,
+            ref: 'user'
         }
 	});
 }
