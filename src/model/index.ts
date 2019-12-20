@@ -2,7 +2,7 @@ import { Mongoose } from 'mongoose';
 import {MongooseModelUser, userModel} from './user';
 import {MongooseModelPost, postModel} from './post';
 
-const URI = process.env.MONGO_URI || 'localhost'; // your mongodb uri
+const URI = process.env.MONGO_URI || 'mongodb://localhost/'; // your mongodb uri
 const DB = process.env.MONGO_DB || 'test'; // your db
 
 const mongoose = new Mongoose();
@@ -11,7 +11,7 @@ mongoose.set('useCreateIndex', true);
 //mongoose.set('debug', true);
 
 export const connect = async () => {
-    await mongoose.connect(`mongodb://${URI}/${DB}`, { useUnifiedTopology: true, useNewUrlParser: true });
+    await mongoose.connect(`${URI}`, { useUnifiedTopology: true, useNewUrlParser: true });
 };
 
 
