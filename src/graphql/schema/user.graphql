@@ -1,19 +1,21 @@
+scalar GraphqlEmail
+
 type User{
     id: ID!
-    email: String!
+    email: GraphqlEmail!
     username: String!
     writePost: [Post!]!
     friends: [User!]!
 }
 
 input UserInputType{
-    email: String!
+    email: GraphqlEmail!
     username: String!
 }
 
 input UserUpdateInputType{
     id: ID!
-    email: String
+    email: GraphqlEmail
     username: String
 }
 
@@ -25,6 +27,7 @@ input FriendInput{
 type Query{
     user(id:ID!) : User!
     userList(pageNum: Int = 1, amount: Int = 20): [User!]!
+    searchUserByEmail(email: GraphqlEmail!): User!
 }
 
 type Mutation{

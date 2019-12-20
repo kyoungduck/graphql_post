@@ -1,17 +1,26 @@
 import _ from 'lodash';
 import { ApolloError } from 'apollo-server';
+import {GraphQLEmail} from 'graphql-custom-types';
 import { UserModel } from '~/model';
 
 export default {
+    GraphqlEmail: GraphQLEmail,
     Query : {
         user: async (parent: any, args: any, context: any) => {
             const result = await UserModel.findOne({_id: args.id});
+            // const result = await context.userLoader.load(args.id);
             if (result === null) { throw new ApolloError('user not exists', 'BAD_ARGUMENT'); }
             return result;
         },
 
         userList: async (parent: any, args: any, context: any) => {
             const result = await UserModel.find().skip((args.pageNum - 1) * args.amount).limit(args.amount);
+            return result;
+        },
+
+        searchUserByEmail: async (parent: any, args: any, context: any) => {
+            const result = await UserModel.findOne({email : args.email});
+            if (result === null) { throw new ApolloError('user not exists', 'BAD_ARGUMENT'); }
             return result;
         }
     },
@@ -76,16 +85,16 @@ export default {
 
     Post: {
         user: async (parent: any, args: any, context: any) => {
-            const result = await UserModel.findOne({_id: parent.userId});
-            // const result = await context.userLoader.load(parent.userId);
+            // const result = await UserModel.findOne({_id: parent.userId});
+            const result = await context.userLoader.load(parent.userId);
             return result;
         }
     },
 
     User: {
         friends: async (parent: any, args: any, context: any) => {
-            const friendList = await UserModel.find({_id : {$in : parent.friends}});
-            // const friendList = await context.userLoader.loadMany(parent.friends)
+            // const friendList = await UserModel.find({_id : {$in : parent.friends}});
+            const friendList = await context.userLoader.loadMany(parent.friends);
             return friendList;
         }
     }

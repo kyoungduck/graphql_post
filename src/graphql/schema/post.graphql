@@ -8,7 +8,7 @@ type Post{
 input PostInputType{
     title: String!
     content: String!
-    userId: ID!    
+    userId: ID!
 }
 
 input PostUpdateInputType{
@@ -17,9 +17,32 @@ input PostUpdateInputType{
     content: String
 }
 
+directive @constraint(
+    # String constraints
+    minLength: Int
+    maxLength: Int
+    startsWith: String
+    endsWith: String
+    notContains: String
+    pattern: String
+    format: String
+
+    # Number constraints
+    min: Int
+    max: Int
+    exclusiveMin: Int
+    exclusiveMax: Int
+    multipleOf: Int
+) on INPUT_FIELD_DEFINITION
+
+input pageInput{
+    page: Int!
+    amount: Int! @constraint(max: 20)
+}
+
 type Query{
     post(id: ID!): Post!
-    postList(pageNum: Int = 1, amount: Int = 20): [Post!]!
+    postList(pageInput: pageInput! = {page:1, amount:20}): [Post!]!
 }
 
 type Mutation{

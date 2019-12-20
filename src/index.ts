@@ -1,15 +1,19 @@
 import express from 'express';
 import helmet from 'helmet';
 import _ from 'lodash';
-import { ApolloServer, gql } from 'apollo-server-express';
+import { ApolloServer } from 'apollo-server-express';
+import {makeExecutableSchema} from 'graphql-tools';
 import './config';
 
 import resolvers from '@gql/resolver/index';
 import typeDefs from '@gql/schema/index';
+
 import {connect} from './model/index';
 
 import userLoader from './dataloader/userLoader';
 import postLoader from './dataloader/postLoader';
+
+const ConstraintDirective = require('graphql-constraint-directive');
 
 const path = process.env.GRAPHQL_PATH || '/graphql';
 const port = process.env.PORT || 3000;
@@ -17,10 +21,14 @@ const port = process.env.PORT || 3000;
 const app = express();
 app.use(helmet());
 
+
 const server = new ApolloServer({
-	typeDefs,
-	resolvers,
-	context: req => ({ locale: 'kr', userLoader : userLoader(), postLoader: postLoader() })
+  schema: makeExecutableSchema({
+    typeDefs,
+    resolvers,
+    schemaDirectives: {constraint: ConstraintDirective}
+  }),
+  context: req => ({ locale: 'kr', userLoader : userLoader(), postLoader: postLoader() }),
 });
 
 server.applyMiddleware({ app, path });

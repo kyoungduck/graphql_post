@@ -11,7 +11,7 @@ export default {
         },
 
         postList: async (parent: any, args: any, context: any) => {
-            const result = await PostModel.find().skip((args.pageNum - 1) * args.amount).limit(args.amount);
+            const result = await PostModel.find().skip((args.pageInput.page - 1) * args.pageInput.amount).limit(args.pageInput.amount);
             return result;
         }
     },
