@@ -69,3 +69,9 @@ $ yarn start
 | deletePost |   MUTAION   |    게시글 삭제     |
 | updatePost |   MUTAION   |    게시글 수정     |
 
+
+
+## 성능
+
+https://github.com/kyoungduck/graphql_post/doc/performance.md
+
