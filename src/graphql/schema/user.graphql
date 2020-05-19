@@ -1,40 +1,74 @@
 scalar GraphqlEmail
 
+"유저 타입"
 type User{
+    "유저 고유 아이디"
     id: ID!
+
+    "이메일"
     email: GraphqlEmail!
+
+    "유저 이름"
     username: String!
+
+    "유저가 쓴 게시글 리스트"
     writePost: [Post!]!
+
+    "친구 리스트"
     friends: [User!]!
 }
 
+"유저 생성 Input Type"
 input UserInputType{
+    "유저 이메일"
     email: GraphqlEmail!
+
+    "유저 이름"
     username: String!
 }
 
+"유저 수정 Input Type"
 input UserUpdateInputType{
+    "유저 아이디(이 아이디를 기반으로 수정)"
     id: ID!
+
+    "수정할 이메일"
     email: GraphqlEmail
+
+    "유저 이름"
     username: String
 }
 
 input FriendInput{
+    "친구를 추가하려는 유저"
     sourceUser: ID!
+
+    "추가하려는 친구의 대상 유저"
     targetUser: ID!
 }
 
 type Query{
+    "유저 정보 조회"
     user(id:ID!) : User!
-    userList(pageNum: Int = 1, amount: Int = 20): [User!]!
+
+    "유저 리스트 조회"
+    userList("현재 페이지" pageNum: Int = 1, "페이지당 User 수" amount: Int = 20): [User!]!
+
+    "이메일로 유저 정보 조회"
     searchUserByEmail(email: GraphqlEmail!): User!
 }
 
 type Mutation{
+    "유저 생성"
     createUser(input: UserInputType!): User!
+    "유저 삭제"
     deleteUser(id:ID!): Boolean!
+    "유저 수정"
     updateUser(input: UserUpdateInputType!): User!
 
+    "친구 추가"
     addFriend(input: FriendInput): User!
+
+    "친구 삭제"
     deleteFriend(input: FriendInput): User!
 }

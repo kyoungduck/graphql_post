@@ -1,19 +1,40 @@
+"게시글 Type"
 type Post{
+
+    "게시글 고유 아이디"
     id: ID!
+
+    "게시글 제목"
     title: String!
+
+    "게시글 내용"
     content: String!
+
+    "작성자"
     user: User!
 }
 
+"게시글 작성 Input Type"
 input PostInputType{
+    "게시글 제목"
     title: String!
+
+    "게시글 내용"
     content: String!
+
+    "작성자 아이디"
     userId: ID!
 }
 
+"게시글 수정 Input Type"
 input PostUpdateInputType{
+    "수정할 게시글의 고유 아이디"
     id: ID!
+
+    "게시글 제목"
     titile: String
+
+    "게시글 내용"
     content: String
 }
 
@@ -35,18 +56,27 @@ directive @constraint(
     multipleOf: Int
 ) on INPUT_FIELD_DEFINITION
 
+"페이징 Input Type"
 input pageInput{
+    "현재 페이지"
     page: Int!
+    "페이지당 게시글 수"
     amount: Int! @constraint(max: 20)
 }
 
 type Query{
+    "게시글 조회"
     post(id: ID!): Post!
+
+    "게시글 리스트 조회"
     postList(pageInput: pageInput! = {page:1, amount:20}): [Post!]!
 }
 
 type Mutation{
+    "게시글 생성"
     createPost(input: PostInputType!): Post!
+    "게시글 삭제"
     deletePost(id: ID!): Boolean!
+    "게시글 수정"
     updatePost(input: PostUpdateInputType): Post!
 }
