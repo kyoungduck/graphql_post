@@ -7,8 +7,9 @@
 	"scripts": {
 		"start": "nodemon node ./build/index.js",
 		"watch": "webpack --watch",
-		"build-dev": "webpack",
-		"build": "webpack --env.production",
+		"watch-prod": "webpack --watch --optimize-minimize --define process.env.NODE_ENV=\"\\\"production\\\"\"",
+		"build": "webpack",
+		"build-prod": "webpack --optimize-minimize --define process.env.NODE_ENV=\"\\\"production\\\"\"",
 		"test": "mocha-webpack --timeout 3000 --recursive --webpack-config webpack/webpack.test.js \"src/**/*.spec.ts\""
 	},
 	"dependencies": {
