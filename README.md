@@ -1,4 +1,3 @@
-# GraphQL User+Post
 
 # GraphQL User+Post
 
