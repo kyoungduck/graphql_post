@@ -73,5 +73,5 @@ $ yarn start
 
 ## 성능
 
-https://github.com/kyoungduck/graphql_post/doc/performance.md
+https://github.com/kyoungduck/graphql_post/blob/master/doc/performance.md
 
