@@ -1,5 +1,5 @@
 {
-	"name": "ts-grpahql-webpack-starter",
+	"name": "graphql-post",
 	"version": "0.0.1",
 	"description": "this project can be based on other projects using typescript and graphql",
 	"main": "index.js",
@@ -12,17 +12,14 @@
 		"test": "mocha-webpack --timeout 3000 --recursive --webpack-config webpack/webpack.test.js \"src/**/*.spec.ts\""
 	},
 	"dependencies": {
-		"@types/express-cluster": "^0.0.0",
 		"apollo-errors": "^1.9.0",
 		"apollo-server": "^2.9.9",
 		"apollo-server-express": "^2.9.9",
-		"apple-auth": "^1.0.4",
 		"bcrypt": "^3.0.7",
 		"body-parser-graphql": "^1.1.0",
 		"dataloader": "^2.0.0",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
-		"express-cluster": "^0.0.5",
 		"graphql": "^14.5.8",
 		"graphql-constraint-directive": "https://github.com/L-L-Cool-J/graphql-constraint-directive.git",
 		"graphql-custom-types": "^1.5.1",
@@ -33,9 +30,7 @@
 		"lodash": "^4.17.15",
 		"merge-graphql-schemas": "^1.7.3",
 		"mongodb-client-encryption": "^0.3.1",
-		"mongoose": "^5.7.13",
-		"reflect-metadata": "^0.1.13",
-		"type-graphql": "^0.17.5"
+		"mongoose": "^5.7.13"
 	},
 	"devDependencies": {
 		"@types/bcrypt": "^3.0.0",
