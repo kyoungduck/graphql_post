@@ -40,7 +40,7 @@ query{
 
 
 
-##### 2. 유저 리스트와 친구리스트
+##### 2. 유저 리스트 & 친구 리스트
 
 ```gql
 query{
@@ -59,7 +59,7 @@ query{
 
 
 
-##### 3. 유저 리스트와 친구리스트, 친구가 작성한 게시글 리스트
+##### 3. 유저 리스트 & 친구 리스트 & 게시글 리스트
 
 ```gql
 query{
@@ -86,6 +86,14 @@ query{
 ## 부하 테스트
 
 한번 요청당 20번, 총 10초동안 돌아가게하여(초당 2번) 가상 유저수를 늘려 60초동안 안정적인 서비스가 되는 가상유저수를 찾는다(그 가상 유저수 X 2 가 서버가 안정적으로 보장하는 TPS가 됨).
+
+##### 관련 스크립트
+
+| 테스트 내용                               | 스크립트 파일                                                |
+| ----------------------------------------- | ------------------------------------------------------------ |
+| 유저 리스트                               | https://github.com/kyoungduck/graphql_post/blob/master/load_test/userList.js |
+| 유저 리스트 & 친구 리스트                 | https://github.com/kyoungduck/graphql_post/blob/master/load_test/userAndFriends.js |
+| 유저 리스트 & 친구 리스트 & 게시글 리스트 | https://github.com/kyoungduck/graphql_post/blob/master/load_test/userFriendsPosts.js |
 
 ##### 유저 리스트 쿼리 테스트
 
